@@ -15,9 +15,9 @@ export default class Timeline extends Component {
 
   async componentDidMount() {
     this.subscribeToEvents();
-    const resonse = await api.get('tweets');
+    const response = await api.get('/tweets');
 
-    this.setState({ tweets: Response.data });
+    this.setState({ tweets: response.data });
   };
 
   subscribeToEvents = () => {
@@ -37,7 +37,7 @@ export default class Timeline extends Component {
     this.setState({ newTweet: e.target.value });
   };
 
-  handleNewTweet = (e) => {
+  handleNewTweet = async e => {
     if( e.keyCode !== 13) return;
 
     const content = this.state.newTweet;
